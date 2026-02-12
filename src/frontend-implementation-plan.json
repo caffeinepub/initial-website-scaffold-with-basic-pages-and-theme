@@ -1,0 +1,38 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Update global theme palette to light-blue (#87ceeb) + black (light and dark modes)",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Replace the current warm/terracotta global theme tokens with a light-blue (#87ceeb) primary and black/dark typography in light mode using the CSS variables in the imported global stylesheet.",
+      "acceptanceCriteria": [
+        "In frontend/src/index.css, the theme CSS variables (including at minimum --primary / --primary-foreground, --background / --foreground, and related tokens like --ring, --accent, --muted, --border) are updated so the primary brand color is #87ceeb and typography is black/dark in light mode.",
+        "The previous terracotta/sage palette values are no longer present in frontend/src/index.css.",
+        "After rebuilding, primary-colored UI elements (e.g., active nav links, primary buttons, icons using text-primary, focus rings using ring) render using the #87ceeb hue in light mode."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the :root theme CSS variables used by Tailwind + shadcn-ui color tokens (primary/foreground, background/foreground, ring, accent, muted, border, input, charts) to a light-blue (#87ceeb) and black/dark palette for light mode, removing the existing terracotta/sage values and related comments. Use the shadcn-ui token approach already wired via Tailwind (oklch(var(--token))) so classes like text-primary, ring, and bg-background reflect the new palette. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Adjust dark-mode theme tokens to a near-black background with #87ceeb accents while preserving the existing theme toggle behavior.",
+      "acceptanceCriteria": [
+        "In frontend/src/index.css under the .dark selector, background tokens render near-black/dark and the primary/accent/ring tokens use the #87ceeb hue (or a visually consistent variant) with sufficient contrast.",
+        "Toggling theme via the existing UI control still works and switches between the updated light and dark palettes without visual regressions (e.g., text remains readable, borders and muted text remain distinguishable)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the .dark theme CSS variables (background/foreground, primary/primary-foreground, accent, ring, muted, border/input, charts as applicable) to use a near-black background, readable light foreground text, and #87ceeb (or a visually consistent variant) for primary/accent/ring. Do not change any theme toggle code; rely on the existing class-based darkMode behavior. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

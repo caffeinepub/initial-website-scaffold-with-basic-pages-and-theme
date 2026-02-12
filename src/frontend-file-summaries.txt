@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component with routing for Home, About, Contact, Portfolio, and Certificates pages, wrapped with QueryClient and ThemeProvider.",
+  "frontend/src/components/SiteLayout.tsx": "Shared layout component with header navigation including Portfolio and Certificates links, AuthButton for login/logout, theme toggle, mobile menu, and footer with social links.",
+  "frontend/src/pages/HomePage.tsx": "Home page featuring hero section with call-to-action, features showcase with icons, and promotional CTA card.",
+  "frontend/src/pages/AboutPage.tsx": "About page displaying company mission, core values with icon cards, and team introduction sections.",
+  "frontend/src/pages/ContactPage.tsx": "Contact page with contact form, contact information cards, and office hours display in a two-column layout.",
+  "frontend/src/components/ContactForm.tsx": "Reusable contact form component with name, email, and message fields, client-side validation, loading states, and success feedback.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for future React Query hooks to interact with backend actor.",
+  "frontend/src/index.css": "Global styles defining a light-blue (#87ceeb) and black color palette in OKLCH format for both light and dark modes, with semantic design tokens for primary, secondary, accent, muted, and chart colors.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom fonts, colors mapped to CSS variables, border radius, shadows, and animations.",
+  "frontend/src/components/AuthButton.tsx": "Authentication button component using Internet Identity for login/logout with loading states and query cache clearing on logout.",
+  "frontend/src/hooks/useAuthz.ts": "Authorization helper hook that provides authentication status and admin role checking for gating management UI.",
+  "frontend/src/hooks/usePortfolioCategories.ts": "React Query hooks for portfolio category operations including read (public) and create/edit/delete mutations (authenticated) with error handling.",
+  "frontend/src/hooks/usePhotographyWorks.ts": "React Query hooks for photography work operations including read (public) and add/edit/delete mutations (authenticated) with category filtering support.",
+  "frontend/src/hooks/useCertificates.ts": "React Query hooks for certificate operations including read (public) and add/edit/delete mutations (authenticated) with error handling.",
+  "frontend/src/pages/PortfolioPage.tsx": "Public portfolio page with category-filtered gallery view and authenticated-only management UI for categories and works with full CRUD operations.",
+  "frontend/src/pages/CertificatesPage.tsx": "Public certificates page displaying professional certifications with authenticated-only management UI for add/edit/delete operations."
+}

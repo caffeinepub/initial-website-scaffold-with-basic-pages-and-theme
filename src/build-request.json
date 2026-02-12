@@ -1,0 +1,56 @@
+{
+  "kind": "build_request",
+  "title": "Apply light-blue (#87ceeb) and black site theme consistently",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Update the global theme tokens used by the app to implement a light-blue (#87ceeb) and black palette, replacing the current warm/terracotta colors. Apply the change in the stylesheet that is actually imported by the app (frontend/src/index.css is imported by frontend/src/main.tsx).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "#87ceeb"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/index.css, the theme CSS variables (including at minimum --primary / --primary-foreground, --background / --foreground, and related tokens like --ring, --accent, --muted, --border) are updated so the primary brand color is #87ceeb and typography is black/dark in light mode.",
+        "The previous terracotta/sage palette values are no longer present in frontend/src/index.css.",
+        "After rebuilding, primary-colored UI elements (e.g., active nav links, primary buttons, icons using text-primary, focus rings using ring) render using the #87ceeb hue in light mode."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Ensure dark mode also follows the light-blue (#87ceeb) and black direction by using a near-black background with #87ceeb accents and readable light foreground text, while preserving existing theme toggle behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Change color to light blue and black"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/index.css under the .dark selector, background tokens render near-black/dark and the primary/accent/ring tokens use the #87ceeb hue (or a visually consistent variant) with sufficient contrast.",
+        "Toggling theme via the existing UI control still works and switches between the updated light and dark palettes without visual regressions (e.g., text remains readable, borders and muted text remain distinguishable)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (read-only UI component sources must be composed, not modified).",
+    "Do not edit immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "Do not add new pages, routes, or features beyond the theme/palette update.",
+    "Do not change backend logic or data models.",
+    "Do not introduce third-party UI libraries beyond what is already in the project."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

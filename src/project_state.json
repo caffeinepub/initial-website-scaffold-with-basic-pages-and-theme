@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Website project includes a public photography portfolio with categorized works management and a Certificates section; user also requested photo upload via standard file picker (album/internal storage/drive) and a light-blue (#87ceeb) + black theme update.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Deployed site did not reflect the requested light-blue/black theme change; palette remained on the previous theme."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-basic-multi-page-website-scaffold-with-a-top-navigation-and-footer-including-at-minimum-home-about-and-contact-pages-using-english-for-all-user-facing-text",
+      "title": "Create a basic multi-page website scaffold with a top navigation and footer, including at minimum: Home, About, and Contact pages, using English for all user-facing text.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-simple-client-side-routing-for-the-website-pages-so-navigation-does-not-require-full-page-reloads",
+      "title": "Implement simple client-side routing for the website pages so navigation does not require full page reloads.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-lightweight-contact-form-ui-name-email-message-with-basic-client-side-validation-and-a-clear-success-error-state-in-the-ui-no-email-sending-integration-required",
+      "title": "Add a lightweight Contact form UI (name, email, message) with basic client-side validation and a clear success/error state in the UI (no email sending integration required).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-define-and-apply-a-coherent-distinct-visual-theme-colors-typography-spacing-and-component-styling-across-all-pages-avoid-a-blue-purple-primary-palette",
+      "title": "Define and apply a coherent, distinct visual theme (colors, typography, spacing, and component styling) across all pages; avoid a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-new-public-site-sections-for-a-photography-portfolio-and-certificates-accessible-to-all-visitors-without-requiring-login",
+      "title": "Add new public site sections for a photography portfolio and certificates, accessible to all visitors without requiring login.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-portfolio-category-management-create-edit-delete-and-ensure-each-photography-work-belongs-to-a-category",
+      "title": "Implement portfolio category management (create, edit, delete) and ensure each photography work belongs to a category.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-photography-works-management-add-edit-delete-including-fields-sufficient-to-display-a-public-portfolio-entry",
+      "title": "Implement photography works management (add, edit, delete) including fields sufficient to display a public portfolio entry.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-certificates-section-with-a-public-list-view-and-an-authenticated-management-ui-to-add-edit-delete-certificates",
+      "title": "Add a Certificates section with a public list view and an authenticated management UI to add/edit/delete certificates.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-restrict-all-create-edit-delete-operations-for-categories-works-and-certificates-to-authenticated-users-while-keeping-all-read-operations-public",
+      "title": "Restrict all create/edit/delete operations for categories, works, and certificates to authenticated users while keeping all read operations public.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-global-theme-tokens-used-by-the-app-to-implement-a-light-blue-87ceeb-and-black-palette-replacing-the-current-warm-terracotta-colors-apply-the-change-in-the-stylesheet-that-is-actually-imported-by-the-app-frontend-src-index-css-is-imported-by-frontend-src-main-tsx",
+      "title": "Update the global theme tokens used by the app to implement a light-blue (#87ceeb) and black palette, replacing the current warm/terracotta colors. Apply the change in the stylesheet that is actually imported by the app (frontend/src/index.css is imported by frontend/src/main.tsx).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-dark-mode-also-follows-the-light-blue-87ceeb-and-black-direction-by-using-a-near-black-background-with-87ceeb-accents-and-readable-light-foreground-text-while-preserving-existing-theme-toggle-behavior",
+      "title": "Ensure dark mode also follows the light-blue (#87ceeb) and black direction by using a near-black background with #87ceeb accents and readable light foreground text, while preserving existing theme toggle behavior.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Define and build the website (requirements, pages/features, design, and deployment details TBD).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add portfolio categories and allow managing photography works with CRUD (add/edit/delete) within categories.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add a Certificates tab/section to the website.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Ensure visitors can browse photography works without logging in (public access).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add image upload using the standard file picker so users can select images from device album, internal storage, or connected drive providers.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Update the site visual theme to use light blue (#87ceeb) and black (confirm background/accent usage).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Initial website scaffold with basic pages and theme",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
