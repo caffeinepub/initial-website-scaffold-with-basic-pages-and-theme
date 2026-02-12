@@ -1,36 +1,51 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update global theme palette to light-blue (#87ceeb) + black (light and dark modes)",
+  "title": "Dashboard works: group by category sections + hover info overlay",
   "requirements": [
     {
-      "id": "REQ-10",
-      "summary": "Replace the current warm/terracotta global theme tokens with a light-blue (#87ceeb) primary and black/dark typography in light mode using the CSS variables in the imported global stylesheet.",
+      "id": "REQ-12",
+      "summary": "Regroup the authenticated Management → Works dashboard list into visible per-category sections with per-section empty states while preserving existing work actions.",
       "acceptanceCriteria": [
-        "In frontend/src/index.css, the theme CSS variables (including at minimum --primary / --primary-foreground, --background / --foreground, and related tokens like --ring, --accent, --muted, --border) are updated so the primary brand color is #87ceeb and typography is black/dark in light mode.",
-        "The previous terracotta/sage palette values are no longer present in frontend/src/index.css.",
-        "After rebuilding, primary-colored UI elements (e.g., active nav links, primary buttons, icons using text-primary, focus rings using ring) render using the #87ceeb hue in light mode."
+        "When an authenticated user opens Portfolio → Management → Works, works are grouped under headings/sections for each category.",
+        "Each section clearly labels the category name (and may include the category description if present).",
+        "Only works whose categoryId matches the section’s category are displayed inside that section.",
+        "If a category has no works, the UI shows an explicit empty-state message within that category section (English text).",
+        "Existing actions (Add Work, Edit, Delete) remain available and functional for works after the regrouping."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/PortfolioPage.tsx",
           "operation": "modify",
-          "description": "Update the :root theme CSS variables used by Tailwind + shadcn-ui color tokens (primary/foreground, background/foreground, ring, accent, muted, border, input, charts) to a light-blue (#87ceeb) and black/dark palette for light mode, removing the existing terracotta/sage values and related comments. Use the shadcn-ui token approach already wired via Tailwind (oklch(var(--token))) so classes like text-primary, ring, and bg-background reflect the new palette. Verify the component's usage instructions before implementing."
+          "description": "Update the authenticated Management → Works tab to render categories as separate sections, each showing only its matching works and an English empty-state when a category has no works; keep Add Work, Edit, and Delete actions wired and functional. Use existing shadcn-ui building blocks (e.g., Card, Button, Tabs) by composition only; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/GroupedWorksSection.tsx",
+          "operation": "create",
+          "description": "Create a reusable section component for the dashboard grouped works view that renders a category header (name + optional description) and its list of works (or an English per-category empty-state). Use composed shadcn-ui components (e.g., Card) rather than editing anything under frontend/src/components/ui; verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-11",
-      "summary": "Adjust dark-mode theme tokens to a near-black background with #87ceeb accents while preserving the existing theme toggle behavior.",
+      "id": "REQ-13",
+      "summary": "Add hover/focus information UI on each dashboard work thumbnail to reveal title/category (and description when present) without blocking Edit/Delete actions.",
       "acceptanceCriteria": [
-        "In frontend/src/index.css under the .dark selector, background tokens render near-black/dark and the primary/accent/ring tokens use the #87ceeb hue (or a visually consistent variant) with sufficient contrast.",
-        "Toggling theme via the existing UI control still works and switches between the updated light and dark palettes without visual regressions (e.g., text remains readable, borders and muted text remain distinguishable)."
+        "In Portfolio → Management → Works, hovering the pointer over a work’s thumbnail reveals an information UI (overlay or tooltip) with the work title and category name.",
+        "If the work has a description, it is displayed in the hover information UI (truncated/clamped as needed).",
+        "Hover UI does not interfere with Edit/Delete buttons (they remain clickable).",
+        "All user-facing text introduced for the hover UI is in English.",
+        "The hover UI is accessible: information is also reachable via keyboard focus on the thumbnail area (e.g., focus-visible styles + show-on-focus behavior)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/components/WorkThumbnailHoverInfo.tsx",
+          "operation": "create",
+          "description": "Implement a focusable thumbnail wrapper for the dashboard works list that shows an overlay on hover and on keyboard focus, containing (at minimum) work title + category name and description when available (clamped). Ensure overlay is limited to the thumbnail area so it does not block Edit/Delete controls. Compose (do not modify) any shadcn-ui primitives used; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PortfolioPage.tsx",
           "operation": "modify",
-          "description": "Update the .dark theme CSS variables (background/foreground, primary/primary-foreground, accent, ring, muted, border/input, charts as applicable) to use a near-black background, readable light foreground text, and #87ceeb (or a visually consistent variant) for primary/accent/ring. Do not change any theme toggle code; rely on the existing class-based darkMode behavior. Verify the component's usage instructions before implementing."
+          "description": "Wire the hover/focus overlay behavior into the authenticated Management → Works grouped sections by rendering each work thumbnail via WorkThumbnailHoverInfo, passing the resolved category name (and ensuring all newly introduced user-facing text is English). Keep Edit/Delete buttons outside the thumbnail overlay hit-area so they remain clickable. Use shadcn-ui components by composition only; verify the component's usage instructions before implementing."
         }
       ]
     }

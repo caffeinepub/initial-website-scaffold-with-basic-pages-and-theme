@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Apply a consistent light-blue (#87ceeb) and black color palette across the app in both light and dark modes by updating the global theme tokens used by the imported stylesheet.
+**Goal:** Improve the authenticated Works management dashboard by grouping photography works into category sections and adding an on-hover information overlay for each work thumbnail.
 
 **Planned changes:**
-- Update theme CSS variables in `frontend/src/index.css` (the stylesheet imported by the app) to use #87ceeb as the primary brand color and black/dark typography in light mode, including related tokens (e.g., `--primary`, `--primary-foreground`, `--background`, `--foreground`, `--ring`, `--accent`, `--muted`, `--border`).
-- Remove the previous warm/terracotta/sage palette values from `frontend/src/index.css`.
-- Update `.dark` theme tokens in `frontend/src/index.css` to use a near-black background, #87ceeb accents (or a consistent variant), and readable light foreground text while preserving the existing theme toggle behavior.
+- Update Portfolio → Management → Works to render works grouped by category, with each category shown as a clearly labeled section (optionally showing the category description when available).
+- Within each category section, list only works that match that category; show an explicit English empty-state message for categories with no works.
+- Add a hover/focus interaction on each work thumbnail to reveal an info overlay/tooltip showing title and category name (and description when available, clamped/truncated as needed).
+- Ensure hover/focus UI does not block existing actions (Add Work, Edit, Delete) and remains accessible via keyboard focus.
 
-**User-visible outcome:** The app’s UI renders with #87ceeb accents and black/dark text in light mode, and a near-black dark mode with #87ceeb accents and readable light text; theme toggling continues to work as before.
+**User-visible outcome:** In the dashboard Works tab, users see photography works organized under category sections, and can hover (or focus via keyboard) on a work thumbnail to quickly view its details without clicking, while still being able to edit or delete works.

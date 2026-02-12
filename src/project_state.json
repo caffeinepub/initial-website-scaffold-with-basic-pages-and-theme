@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
-  "summary": "Website project includes a public photography portfolio with categorized works management and a Certificates section; user also requested photo upload via standard file picker (album/internal storage/drive) and a light-blue (#87ceeb) + black theme update.",
+  "projectStateVersion": 9,
+  "summary": "Website project includes a public photography portfolio with categorized works management and a Certificates section; user also requested photo upload via standard file picker (album/internal storage/drive) and a light-blue (#87ceeb) + black theme update. Additionally, the dashboard Photography Works UI should display each category as its own section and allow hover-on-photo to reveal information.",
   "architectural_notes": [],
   "known_issues": [
     "Deployed site did not reflect the requested light-blue/black theme change; palette remained on the previous theme."
   ],
-  "isFixRequest": true,
+  "isFixRequest": false,
   "existing_features": [
     {
       "id": "feature-create-a-basic-multi-page-website-scaffold-with-a-top-navigation-and-footer-including-at-minimum-home-about-and-contact-pages-using-english-for-all-user-facing-text",
@@ -95,6 +95,22 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-authenticated-dashboard-portfolio-page-management-works-tab-to-display-photography-works-grouped-by-category-with-each-category-rendered-as-its-own-visible-section-containing-that-category-s-works-instead-of-a-single-flat-list",
+      "title": "Update the authenticated dashboard (Portfolio page → Management → Works tab) to display photography works grouped by category, with each category rendered as its own visible section containing that category’s works (instead of a single flat list).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-hover-interaction-for-each-work-s-thumbnail-in-the-dashboard-grouped-works-view-so-that-hovering-over-a-photo-reveals-the-work-s-information-at-minimum-title-and-category-include-description-when-available-using-an-overlay-or-tooltip-that-does-not-require-a-click",
+      "title": "Add a hover interaction for each work’s thumbnail in the dashboard grouped works view so that hovering over a photo reveals the work’s information (at minimum: title and category; include description when available) using an overlay or tooltip that does not require a click.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -131,6 +147,18 @@
     {
       "id": "AR-6",
       "summary": "Update the site visual theme to use light blue (#87ceeb) and black (confirm background/accent usage).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "In the dashboard Photography Works view, display each category as a distinct section containing its photos/works (grouped layout).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add hover interaction on photos in the dashboard to reveal work information (e.g., title/metadata overlay or tooltip).",
       "reqIds": [],
       "status": "pending"
     }

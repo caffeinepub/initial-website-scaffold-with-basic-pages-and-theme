@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-global-theme-tokens-used-by-the-app-to-implement-a-light-blue-87ceeb-and-black-palette-replacing-the-current-warm-terracotta-colors-apply-the-change-in-the-stylesheet-that-is-actually-imported-by-the-app-frontend-src-index-css-is-imported-by-frontend-src-main-tsx",
-      "featureTitle": "Update the global theme tokens used by the app to implement a light-blue (#87ceeb) and black palette, replacing the current warm/terracotta colors. Apply the change in the stylesheet that is actually imported by the app (frontend/src/index.css is imported by frontend/src/main.tsx).",
+      "featureId": "feature-update-the-authenticated-dashboard-portfolio-page-management-works-tab-to-display-photography-works-grouped-by-category-with-each-category-rendered-as-its-own-visible-section-containing-that-category-s-works-instead-of-a-single-flat-list",
+      "featureTitle": "Update the authenticated dashboard (Portfolio page → Management → Works tab) to display photography works grouped by category, with each category rendered as its own visible section containing that category’s works (instead of a single flat list).",
       "files": [
-        "frontend/src/index.css"
+        "frontend/src/components/GroupedWorksSection.tsx",
+        "frontend/src/pages/PortfolioPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,15 +17,16 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-10"
+        "REQ-12"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-ensure-dark-mode-also-follows-the-light-blue-87ceeb-and-black-direction-by-using-a-near-black-background-with-87ceeb-accents-and-readable-light-foreground-text-while-preserving-existing-theme-toggle-behavior",
-      "featureTitle": "Ensure dark mode also follows the light-blue (#87ceeb) and black direction by using a near-black background with #87ceeb accents and readable light foreground text, while preserving existing theme toggle behavior.",
+      "featureId": "feature-add-a-hover-interaction-for-each-work-s-thumbnail-in-the-dashboard-grouped-works-view-so-that-hovering-over-a-photo-reveals-the-work-s-information-at-minimum-title-and-category-include-description-when-available-using-an-overlay-or-tooltip-that-does-not-require-a-click",
+      "featureTitle": "Add a hover interaction for each work’s thumbnail in the dashboard grouped works view so that hovering over a photo reveals the work’s information (at minimum: title and category; include description when available) using an overlay or tooltip that does not require a click.",
       "files": [
-        "frontend/src/index.css"
+        "frontend/src/components/WorkThumbnailHoverInfo.tsx",
+        "frontend/src/pages/PortfolioPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -35,7 +37,7 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-11"
+        "REQ-13"
       ],
       "confidence": "high"
     }

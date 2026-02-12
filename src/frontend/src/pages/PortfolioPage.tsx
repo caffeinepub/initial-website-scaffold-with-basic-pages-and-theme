@@ -13,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Plus, Edit, Trash2, Image as ImageIcon, Loader2, FolderPlus } from 'lucide-react';
 import type { PortfolioCategory, PhotographyWork, CategoryId, WorkId } from '../backend';
+import GroupedWorksSection from '../components/GroupedWorksSection';
 
 type Route = '/' | '/about' | '/contact' | '/portfolio' | '/certificates';
 
@@ -232,7 +233,7 @@ export default function PortfolioPage({ navigate }: PortfolioPageProps) {
                 </div>
               </TabsContent>
 
-              <TabsContent value="works" className="space-y-4">
+              <TabsContent value="works" className="space-y-6">
                 <div className="flex justify-between items-center">
                   <p className="text-sm text-muted-foreground">
                     {works.length} {works.length === 1 ? 'work' : 'works'}
@@ -252,53 +253,21 @@ export default function PortfolioPage({ navigate }: PortfolioPageProps) {
                     Create at least one category before adding works.
                   </p>
                 ) : (
-                  <div className="grid gap-3">
-                    {works.map((work) => {
-                      const category = categories.find((c) => c.id === work.categoryId);
+                  <div className="space-y-8">
+                    {categories.map((category) => {
+                      const categoryWorks = works.filter(
+                        (work) => work.categoryId === category.id
+                      );
                       return (
-                        <div
-                          key={work.id.toString()}
-                          className="flex items-center justify-between p-3 border rounded-lg"
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className="w-16 h-16 rounded overflow-hidden bg-muted flex-shrink-0">
-                              <img
-                                src={work.imageUrl}
-                                alt={work.title}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div>
-                              <h4 className="font-medium">{work.title}</h4>
-                              <p className="text-sm text-muted-foreground">
-                                {category?.name || 'Unknown category'}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex gap-2">
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => handleOpenWorkDialog(work)}
-                            >
-                              <Edit className="h-4 w-4" />
-                            </Button>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => setDeleteWorkId(work.id)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </div>
+                        <GroupedWorksSection
+                          key={category.id.toString()}
+                          category={category}
+                          works={categoryWorks}
+                          onEditWork={handleOpenWorkDialog}
+                          onDeleteWork={setDeleteWorkId}
+                        />
                       );
                     })}
-                    {works.length === 0 && (
-                      <p className="text-center text-muted-foreground py-8">
-                        No works yet. Add your first photography work to showcase.
-                      </p>
-                    )}
                   </div>
                 )}
               </TabsContent>
@@ -518,36 +487,6 @@ export default function PortfolioPage({ navigate }: PortfolioPageProps) {
         </DialogContent>
       </Dialog>
 
-      {/* Work Detail Dialog */}
-      <Dialog open={!!selectedWork} onOpenChange={() => setSelectedWork(null)}>
-        <DialogContent className="max-w-4xl">
-          {selectedWork && (
-            <>
-              <DialogHeader>
-                <DialogTitle>{selectedWork.title}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4">
-                <div className="w-full aspect-video overflow-hidden rounded-lg bg-muted">
-                  <img
-                    src={selectedWork.imageUrl}
-                    alt={selectedWork.title}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                {selectedWork.description && (
-                  <p className="text-muted-foreground">{selectedWork.description}</p>
-                )}
-                <div className="text-sm text-muted-foreground">
-                  Category:{' '}
-                  {categories.find((c) => c.id === selectedWork.categoryId)?.name ||
-                    'Unknown'}
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-
       {/* Delete Category Confirmation */}
       <AlertDialog open={deleteCategoryId !== null} onOpenChange={() => setDeleteCategoryId(null)}>
         <AlertDialogContent>
@@ -604,6 +543,34 @@ export default function PortfolioPage({ navigate }: PortfolioPageProps) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Work Detail Dialog */}
+      <Dialog open={selectedWork !== null} onOpenChange={() => setSelectedWork(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedWork && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{selectedWork.title}</DialogTitle>
+                <DialogDescription>
+                  {categories.find((c) => c.id === selectedWork.categoryId)?.name || 'Unknown category'}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div className="aspect-video overflow-hidden rounded-lg bg-muted">
+                  <img
+                    src={selectedWork.imageUrl}
+                    alt={selectedWork.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                {selectedWork.description && (
+                  <p className="text-muted-foreground">{selectedWork.description}</p>
+                )}
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

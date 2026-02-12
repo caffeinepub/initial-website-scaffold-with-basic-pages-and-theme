@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-12T06:28:55.363Z",
+  "generatedAt": "2026-02-12T06:36:56.364Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,25 +11,29 @@
     "implemented": 2,
     "items": [
       {
-        "id": "REQ-10",
-        "summary": "Update the global theme tokens used by the app to implement a light-blue (#87ceeb) and black palette, replacing the current warm/terracotta colors. Apply the change in the stylesheet that is actually imported by the app (frontend/src/index.css is imported by frontend/src/main.tsx).",
+        "id": "REQ-12",
+        "summary": "Update the authenticated dashboard (Portfolio page → Management → Works tab) to display photography works grouped by category, with each category rendered as its own visible section containing that category’s works (instead of a single flat list).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/pages/PortfolioPage.tsx",
+          "frontend/src/components/GroupedWorksSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/pages/PortfolioPage.tsx",
+          "frontend/src/components/GroupedWorksSection.tsx"
         ]
       },
       {
-        "id": "REQ-11",
-        "summary": "Ensure dark mode also follows the light-blue (#87ceeb) and black direction by using a near-black background with #87ceeb accents and readable light foreground text, while preserving existing theme toggle behavior.",
+        "id": "REQ-13",
+        "summary": "Add a hover interaction for each work’s thumbnail in the dashboard grouped works view so that hovering over a photo reveals the work’s information (at minimum: title and category; include description when available) using an overlay or tooltip that does not require a click.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/components/WorkThumbnailHoverInfo.tsx",
+          "frontend/src/pages/PortfolioPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/components/WorkThumbnailHoverInfo.tsx",
+          "frontend/src/pages/PortfolioPage.tsx"
         ]
       }
     ]
@@ -39,7 +43,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/index.css",
+    "frontend/src/components/GroupedWorksSection.tsx",
+    "frontend/src/components/WorkThumbnailHoverInfo.tsx",
+    "frontend/src/pages/PortfolioPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

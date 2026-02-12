@@ -1,56 +1,71 @@
 {
   "kind": "build_request",
-  "title": "Apply light-blue (#87ceeb) and black site theme consistently",
+  "title": "Group dashboard works by category sections and add hover info overlay",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-10",
-      "text": "Update the global theme tokens used by the app to implement a light-blue (#87ceeb) and black palette, replacing the current warm/terracotta colors. Apply the change in the stylesheet that is actually imported by the app (frontend/src/index.css is imported by frontend/src/main.tsx).",
+      "id": "REQ-12",
+      "text": "Update the authenticated dashboard (Portfolio page → Management → Works tab) to display photography works grouped by category, with each category rendered as its own visible section containing that category’s works (instead of a single flat list).",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "#87ceeb"
+          "Make it look like each category as a section under photography works in dashboard."
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/index.css, the theme CSS variables (including at minimum --primary / --primary-foreground, --background / --foreground, and related tokens like --ring, --accent, --muted, --border) are updated so the primary brand color is #87ceeb and typography is black/dark in light mode.",
-        "The previous terracotta/sage palette values are no longer present in frontend/src/index.css.",
-        "After rebuilding, primary-colored UI elements (e.g., active nav links, primary buttons, icons using text-primary, focus rings using ring) render using the #87ceeb hue in light mode."
+        "When an authenticated user opens Portfolio → Management → Works, works are grouped under headings/sections for each category.",
+        "Each section clearly labels the category name (and may include the category description if present).",
+        "Only works whose categoryId matches the section’s category are displayed inside that section.",
+        "If a category has no works, the UI shows an explicit empty-state message within that category section (English text).",
+        "Existing actions (Add Work, Edit, Delete) remain available and functional for works after the regrouping."
       ]
     },
     {
-      "id": "REQ-11",
-      "text": "Ensure dark mode also follows the light-blue (#87ceeb) and black direction by using a near-black background with #87ceeb accents and readable light foreground text, while preserving existing theme toggle behavior.",
+      "id": "REQ-13",
+      "text": "Add a hover interaction for each work’s thumbnail in the dashboard grouped works view so that hovering over a photo reveals the work’s information (at minimum: title and category; include description when available) using an overlay or tooltip that does not require a click.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Change color to light blue and black"
+          "And user can hover on the photo to see information"
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/index.css under the .dark selector, background tokens render near-black/dark and the primary/accent/ring tokens use the #87ceeb hue (or a visually consistent variant) with sufficient contrast.",
-        "Toggling theme via the existing UI control still works and switches between the updated light and dark palettes without visual regressions (e.g., text remains readable, borders and muted text remain distinguishable)."
+        "In Portfolio → Management → Works, hovering the pointer over a work’s thumbnail reveals an information UI (overlay or tooltip) with the work title and category name.",
+        "If the work has a description, it is displayed in the hover information UI (truncated/clamped as needed).",
+        "Hover UI does not interfere with Edit/Delete buttons (they remain clickable).",
+        "All user-facing text introduced for the hover UI is in English.",
+        "The hover UI is accessible: information is also reachable via keyboard focus on the thumbnail area (e.g., focus-visible styles + show-on-focus behavior)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (read-only UI component sources must be composed, not modified).",
-    "Do not edit immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "Keep all user-facing text in English."
+    "Do not edit files under frontend/src/components/ui (shadcn components are read-only); compose them instead.",
+    "Do not modify Internet Identity hooks/components in immutable paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep the backend architecture as a single Motoko actor; no backend changes are required for this UI-only update."
   ],
   "nonGoals": [
-    "Do not add new pages, routes, or features beyond the theme/palette update.",
-    "Do not change backend logic or data models.",
-    "Do not introduce third-party UI libraries beyond what is already in the project."
+    "Implementing an image/file picker or upload flow for photography works.",
+    "Changing backend data models or adding new fields to works/categories.",
+    "Changing the public gallery layout (non-dashboard) unless required to support the dashboard changes."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

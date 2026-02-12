@@ -13,6 +13,8 @@
   "frontend/src/hooks/usePortfolioCategories.ts": "React Query hooks for portfolio category operations including read (public) and create/edit/delete mutations (authenticated) with error handling.",
   "frontend/src/hooks/usePhotographyWorks.ts": "React Query hooks for photography work operations including read (public) and add/edit/delete mutations (authenticated) with category filtering support.",
   "frontend/src/hooks/useCertificates.ts": "React Query hooks for certificate operations including read (public) and add/edit/delete mutations (authenticated) with error handling.",
-  "frontend/src/pages/PortfolioPage.tsx": "Public portfolio page with category-filtered gallery view and authenticated-only management UI for categories and works with full CRUD operations.",
-  "frontend/src/pages/CertificatesPage.tsx": "Public certificates page displaying professional certifications with authenticated-only management UI for add/edit/delete operations."
+  "frontend/src/pages/PortfolioPage.tsx": "Portfolio page with public gallery view and authenticated management UI featuring category-grouped works sections in the Works tab, hover information overlays on thumbnails, and full CRUD operations for both categories and works.",
+  "frontend/src/pages/CertificatesPage.tsx": "Public certificates page displaying professional certifications with authenticated-only management UI for add/edit/delete operations.",
+  "frontend/src/components/GroupedWorksSection.tsx": "Reusable component that displays a category section with its header (name and description) and a grid of works with hover info thumbnails and edit/delete actions, showing an empty state when no works exist in the category.",
+  "frontend/src/components/WorkThumbnailHoverInfo.tsx": "Focusable thumbnail wrapper component that displays a work image and reveals an overlay with work title, category name, and description on hover or keyboard focus, with smooth transitions and accessibility support."
 }
